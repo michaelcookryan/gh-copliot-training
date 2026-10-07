@@ -90,7 +90,11 @@ document.addEventListener("DOMContentLoaded", () => {
       messageDiv.className = response.ok ? "success" : "error";
       messageDiv.classList.remove("hidden");
 
-      if (response.ok) await fetchActivities();
+      if (response.ok) {
+        await fetchActivities();
+      } else {
+        removeButton.disabled = false;
+      }
     } catch (error) {
       messageDiv.textContent = "Failed to unregister. Please try again.";
       messageDiv.className = "error";
